@@ -1,0 +1,29 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Lendee Detail Register</h1>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <app-lendee-details-form></app-lendee-details-form>
+    </div>
+    <div class="col-md-7">
+        <div>Table with list of records from the table</div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Lendee Id</th>
+                    <th>Name</th>
+                    <th>Contact Number</th>
+                    
+                </tr>
+            </thead>
+            <tr *ngFor="let pd of service.list">
+                <td (click)="populateForm(pd)">{{pd.lendeeId}}</td>
+                <td (click)="populateForm(pd)">{{pd.name}}</td>
+                <td (click)="populateForm(pd)">{{pd.contactNum}}</td>
+                <td>
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.lendeeId)"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

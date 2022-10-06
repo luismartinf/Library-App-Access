@@ -1,0 +1,37 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Books Detail Register</h1>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <app-books-detail-form [onLendee]="this.service.formData.onlend"></app-books-detail-form>
+    </div>
+    <div class="col-md-7">
+        <div>Table with list of records from the table</div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Book Id</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Year Published</th>
+                    <th>On Lend </th>
+                    <th>Date Lend</th>
+                    <th>Lendee Id</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let pd of service.list">
+                <td (click)="populateForm(pd)">{{pd.bookId}}</td>
+                <td (click)="populateForm(pd)">{{pd.name}}</td>
+                <td (click)="populateForm(pd)">{{pd.author}}</td>
+                <td (click)="populateForm(pd)">{{pd.yearPub}}</td>
+                <td (click)="populateForm(pd)">{{pd.onlend}}</td>
+                <td (click)="populateForm(pd)">{{pd.dateLend}}</td>
+                <td (click)="populateForm(pd)">{{pd.lendeeId}}</td>
+                <td>
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.bookId)"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+   
+</div>

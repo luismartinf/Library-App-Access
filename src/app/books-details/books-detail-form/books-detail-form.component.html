@@ -1,0 +1,46 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="BookId" [value]="service.formData.bookId" />
+    <div class="form-group">
+        <label>BOOK'S NAME</label>
+        <input class="form-control form-control-lg" placeholder="Books Name" name="BooksName"
+            #BooksName="ngModel" [(ngModel)]="service.formData.name"
+            required [class.invalid]="BooksName.invalid &#038;&#038; BooksName.touched">
+    </div>
+    <div class="form-group">
+        <label>AUTHOR NAME</label>
+        <input class="form-control form-control-lg" placeholder="Author's Name" name="AuthorName"
+            #AuthorName="ngModel" [(ngModel)]="service.formData.author"
+            required [class.invalid]="AuthorName.invalid &#038;&#038; AuthorName.touched">
+    </div>
+    <div class="form-group">
+        <label>PUBLISHED YEAR</label>
+        <input type="number" class="form-control form-control-lg" placeholder="Published year" name="YearPub"
+            #YearPub="ngModel" [(ngModel)]="service.formData.yearPub"
+            required [class.invalid]="YearPub.invalid &#038;&#038; YearPub.touched">
+    </div>
+    <div class="form-group">
+        <label>ON LEND</label>
+        <input type="checkbox" class="form-control form-control-lg" title="OnLend" name="OnLend" 
+             #OnLend="ngModel"   [(ngModel)]="onLendee"  (click)="onChange()"
+             [class.invalid]="OnLend.invalid &#038;&#038; OnLend.touched">
+    </div>   
+
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <label>LENDEE ID</label>
+            <select  #LendeeId="ngModel"[(ngModel)]="service.formData.lendeeId "[ngModelOptions]="{standalone: true}" title="LendeeId">
+                <option *ngFor="let item of lendees " [value]="item">{{item}}</option>
+            </select>                 
+        </div>
+
+        <div class="form-group col-md-9">
+        <label>Lendee Date (YYYY-MM-DDTHH:mm:SS)</label>
+        <input class="form-control form-control-lg" placeholder="YYYY-MM-DDTHH:mm:SS" name=" DateLend"
+            #DateLend="ngModel" [(ngModel)]="service.formData.dateLend">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>
